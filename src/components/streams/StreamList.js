@@ -12,8 +12,12 @@ class StreamList extends React.Component {
         if (stream.userId === this.props.currentUser) {
             return (
                 <div>
-                    <Link to={ `/streams/edit/${stream.id}` } className="btn btn-primary m-1">Edit</Link>
-                    <a href="#" className="btn btn-danger">Delete</a>
+                    <Link to={ `/streams/edit/${stream.id}` } className="btn btn-primary m-1">
+                        Edit
+                        </Link>
+                    <Link to={ `/streams/delete/${stream.id}` } className="btn btn-danger m-1">
+                        Delete
+                    </Link>
                 </div>
             );
         };
@@ -24,7 +28,9 @@ class StreamList extends React.Component {
             return (
                 <div className="card m-3" style={{width: '18rem'}} key={ stream.id } >
                     <div className="card-body">
-                        <h5 className="card-title">{ stream.title }</h5>
+                        <Link to={ `/streams/${stream.id}` }>
+                            <h5 className="card-title">{ stream.title }</h5>
+                        </Link>
                         <p className="card-text">{ stream.description }</p>
                         { this.adminButtons(stream) }
                     </div>
